@@ -3,6 +3,9 @@ import javax.swing.*;
 
 public class GraphicsSwing extends JPanel {
 
+    int m = 2;
+    int s = 1;
+
     public static void main(String[] args) {
         GraphicsSwing m = new GraphicsSwing();
         JFrame f = new JFrame("Happy New Year 2024");
@@ -13,13 +16,19 @@ public class GraphicsSwing extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g2) {
+
+        Graphics2D g = (Graphics2D) g2;
+        g.setStroke(new BasicStroke(2));
 
         background(g);
+        earth(g);
 
         dragonHead(g);
         dragonHeadDetail(g);
         dragonFaceDetail(g);
+        dragonHeadLittleDetail(g);
+
         dragonHorn(g);
 
         dragonNeck(g);
@@ -49,9 +58,17 @@ public class GraphicsSwing extends JPanel {
     }
 
     public void background(Graphics g) {
-        line(g, 0, 600, 600, 600);
-        line(g, 600, 0, 600, 600);
+        line(g, 0, 600, 600, 600, m);
+        line(g, 600, 0, 600, 600, m);
 
+    }
+
+    public void earth(Graphics g){
+        int xPloy[] = {};
+        int yPoly[] = {};
+
+        Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.drawPolygon(ploy);
     }
 
     public void dragonHead(Graphics g) {
@@ -65,32 +82,61 @@ public class GraphicsSwing extends JPanel {
     }
 
     public void dragonHeadDetail(Graphics g) {
-        line(g, 288, 82, 325, 98);
-        line(g, 325, 98, 374, 113);
-        line(g, 374, 113, 380, 107);
-        line(g, 380, 107, 375, 94);
+        line(g, 288, 82, 325, 98, m);
+        line(g, 325, 98, 374, 113, m);
+        line(g, 374, 113, 380, 107, m);
+        line(g, 380, 107, 375, 94, m);
+    }
+
+    public void dragonHeadLittleDetail(Graphics g) {
+        drawScale(g, 325, 98, 340, 125, 352, 105, s);
+        drawScale(g, 340, 125, 332, 129, 374, 113, s);
+        drawScale(g, 334, 139, 349, 144, 352, 120, s);
+
+        drawScale(g, 351, 166, 365, 130, 380, 177, s);
+        drawScale(g, 380, 177, 395, 166, 373, 154, s);
+        drawScale(g, 373, 154, 395, 142, 365, 130, s);
+        drawScale(g, 395, 142, 395, 182, 409, 175, s);
+
+        line(g, 347, 176, 361, 169, s);
+
+        drawScale(g, 384, 116, 397, 109, 409, 130, s);
+        line(g, 384, 116, 409, 130, s);
+
+        line(g, 431, 145, 465, 199, s);
+        line(g, 432, 187, 458, 186, s);
+
+        line(g, 411, 161, 434, 144, s);
+        drawScale(g, 422, 155, 421, 169, 434, 169, s);
+
+        drawScale(g, 282, 95, 303, 105, 287, 81, s);
+
+        drawScale(g, 274, 114, 313, 125, 325, 98, s);
+        drawScale(g, 291, 125, 313, 125, 336, 159, s);
+        line(g, 313, 125, 330, 125, s);
+
     }
 
     public void dragonHorn(Graphics g) {
-        line(g, 357, 77, 380, 107);
-        line(g, 350, 90, 361, 109);
-        line(g, 314, 69, 361, 109);
-        line(g, 314, 84, 325, 98);
+        line(g, 357, 77, 380, 107, m);
+        line(g, 350, 90, 361, 109, m);
+        line(g, 314, 69, 361, 109, m);
+        line(g, 314, 84, 325, 98, m);
     }
 
     public void dragonFaceDetail(Graphics g) {
-        line(g, 274, 114, 325, 98);
-        line(g, 325, 98, 337, 160);
-        line(g, 337, 160, 374, 113);
-        line(g, 337, 160, 386, 180);
-        line(g, 380, 107, 412, 189);
-        line(g, 394, 143, 419, 140);
-        line(g, 394, 145, 417, 122);
-        line(g, 394, 145, 432, 145);
-        line(g, 432, 145, 432, 187);
-        line(g, 394, 145, 432, 187);
-        line(g, 412, 189, 432, 187);
-        line(g, 459, 198, 432, 187);
+        line(g, 274, 114, 325, 98, m);
+        line(g, 325, 98, 337, 160, m);
+        line(g, 337, 160, 374, 113, m);
+        line(g, 337, 160, 386, 180, m);
+        line(g, 380, 107, 412, 189, m);
+        line(g, 394, 143, 419, 140, m);
+        line(g, 394, 145, 417, 122, m);
+        line(g, 394, 145, 432, 145, m);
+        line(g, 432, 145, 432, 187, m);
+        line(g, 394, 145, 432, 187, m);
+        line(g, 412, 189, 432, 187, m);
+        line(g, 459, 198, 432, 187, m);
     }
 
     public void dragonNeck(Graphics g) {
@@ -102,15 +148,15 @@ public class GraphicsSwing extends JPanel {
     }
 
     public void dragonNeckDetail(Graphics g) {
-        line(g, 233, 113, 274, 114);
+        line(g, 233, 113, 274, 114, m);
 
-        drawScale(g, 241, 77, 233, 113, 246, 140);
-        drawScale(g, 209, 85, 233, 113, 189, 155);
-        drawScale(g, 181, 95, 180, 125, 212, 136);
-        drawScale(g, 143, 125, 180, 125, 189, 155);
+        drawScale(g, 241, 77, 233, 113, 246, 140, m);
+        drawScale(g, 209, 85, 233, 113, 189, 155, m);
+        drawScale(g, 181, 95, 180, 125, 212, 136, m);
+        drawScale(g, 143, 125, 180, 125, 189, 155, m);
 
-        line(g, 180, 125, 157, 180);
-        line(g, 189, 155, 213, 153);
+        line(g, 180, 125, 157, 180, m);
+        line(g, 189, 155, 213, 153, m);
     }
 
     public void dragonFrontLeg(Graphics g) {
@@ -123,8 +169,8 @@ public class GraphicsSwing extends JPanel {
 
     public void dragonFrontLegDetail(Graphics g) {
 
-        line(g, 180, 202, 222, 185);
-        line(g, 254, 171, 249, 203);
+        line(g, 180, 202, 222, 185, m);
+        line(g, 254, 171, 249, 203, m);
 
     }
 
@@ -137,11 +183,11 @@ public class GraphicsSwing extends JPanel {
     }
 
     public void dragonFrontNailFrontLegDetail(Graphics g) {
-        line(g, 285, 227, 293, 212);
-        line(g, 285, 227, 302, 223);
-        line(g, 289, 234, 302, 223);
-        line(g, 289, 234, 312, 234);
-        line(g, 305, 240, 298, 234);
+        line(g, 285, 227, 293, 212, m);
+        line(g, 285, 227, 302, 223, m);
+        line(g, 289, 234, 302, 223, m);
+        line(g, 289, 234, 312, 234, m);
+        line(g, 305, 240, 298, 234, m);
     }
 
     public void dragonBackNailFrontLeg(Graphics g) {
@@ -153,7 +199,7 @@ public class GraphicsSwing extends JPanel {
     }
 
     public void dragonBackNailFrontLegDetail(Graphics g) {
-        line(g, 246, 245, 253, 235);
+        line(g, 246, 245, 253, 235, m);
     }
 
     public void dragonBody(Graphics g) {
@@ -165,9 +211,9 @@ public class GraphicsSwing extends JPanel {
     }
 
     public void dragonBodyDetail(Graphics g) {
-        drawScale(g, 97, 229, 157, 180, 145, 235);
-        drawScale(g, 119, 285, 145, 235, 193, 299);
-        line(g, 164, 260, 187, 251);
+        drawScale(g, 97, 229, 157, 180, 145, 235, m);
+        drawScale(g, 119, 285, 145, 235, 193, 299, m);
+        line(g, 164, 260, 187, 251, m);
     }
 
     public void dragonBackLeg(Graphics g) {
@@ -178,16 +224,16 @@ public class GraphicsSwing extends JPanel {
         g.drawPolygon(ploy);
     }
 
-    public void dragonThigh(Graphics g){
-        line(g, 173, 323, 340, 333);
-        line(g, 193, 299, 340, 333);
-        line(g, 247, 360, 340, 333);
+    public void dragonThigh(Graphics g) {
+        line(g, 173, 323, 340, 333, m);
+        line(g, 193, 299, 340, 333, m);
+        line(g, 247, 360, 340, 333, m);
     }
 
-    public void dragonBackLegDetail(Graphics g){
-        line(g, 247, 360, 274, 372);
-        line(g, 246, 460, 246, 431);
-        drawScale(g, 246, 405, 274, 422, 274, 372);
+    public void dragonBackLegDetail(Graphics g) {
+        line(g, 247, 360, 274, 372, m);
+        line(g, 246, 460, 246, 431, m);
+        drawScale(g, 246, 405, 274, 422, 274, 372, m);
     }
 
     public void dragonNailBackLeg(Graphics g) {
@@ -199,10 +245,10 @@ public class GraphicsSwing extends JPanel {
     }
 
     public void dragonNailBackLegDetail(Graphics g) {
-        line(g, 216, 402, 216, 416);
-        line(g, 217, 431, 224, 419);
-        line(g, 230, 431, 224, 419);
-        line(g, 205, 410, 213, 414);
+        line(g, 216, 402, 216, 416, m);
+        line(g, 217, 431, 224, 419, m);
+        line(g, 230, 431, 224, 419, m);
+        line(g, 205, 410, 213, 414, m);
     }
 
     public void dragonTail(Graphics g) {
@@ -215,33 +261,56 @@ public class GraphicsSwing extends JPanel {
         g.drawPolygon(ploy);
     }
 
-    public void dragonTailDetail(Graphics g){
-        drawScale(g, 274, 372, 324, 423, 314, 498);
-        drawScale(g, 294, 496, 314, 498, 256, 517);
+    public void dragonTailDetail(Graphics g) {
+        drawScale(g, 274, 372, 324, 423, 314, 498, m);
+        drawScale(g, 294, 496, 314, 498, 256, 517, m);
+        drawScale(g, 178, 552, 197, 527, 256, 517, m);
+        line(g, 198, 521, 197, 527, m);
+
+        drawScale(g, 324, 424, 335, 390, 362, 388, m);
+        drawScale(g, 295, 359, 335, 390, 373, 466, m);
+        drawScale(g, 373, 466, 324, 424, 358, 517, m);
+
+        drawScale(g, 324, 424, 339, 502, 314, 557, m);
+        drawScale(g, 314, 498, 339, 502, 358, 517, m);
+        drawScale(g, 263, 570, 314, 498, 314, 557, m);
+
+        drawScale(g, 314, 498, 268, 543, 215, 566, m);
+        drawScale(g, 256, 517, 268, 543, 263, 570, m);
+
+        drawScale(g, 178, 552, 256, 517, 215, 566, m);
+
+        //
+
+        drawScale(g, 130, 518, 198, 521, 150, 532, m);
+        drawScale(g, 123, 485, 146, 506, 198, 521, m);
+        drawScale(g, 123, 485, 130, 518, 146, 506, m);
+        drawScale(g, 45, 448, 63, 444, 76, 487, m);
+        drawScale(g, 99, 467, 124, 501, 76, 487, m);
     }
 
     public void dragonScales(Graphics g) {
-        drawScale(g, 241, 77, 225, 68, 288, 82);
-        drawScale(g, 209, 85, 193, 77, 241, 77);
-        drawScale(g, 181, 95, 159, 87, 209, 85);
-        drawScale(g, 143, 125, 112, 130, 181, 95);
-        drawScale(g, 113, 168, 75, 185, 143, 124);
-        drawScale(g, 97, 229, 59, 260, 113, 168);
-        drawScale(g, 119, 285, 96, 340, 97, 229);
-        drawScale(g, 173, 323, 173, 388, 119, 285);
-        drawScale(g, 246, 360, 235, 408, 173, 323);
+        drawScale(g, 241, 77, 225, 68, 288, 82, m);
+        drawScale(g, 209, 85, 193, 77, 241, 77, m);
+        drawScale(g, 181, 95, 159, 87, 209, 85, m);
+        drawScale(g, 143, 125, 112, 130, 181, 95, m);
+        drawScale(g, 113, 168, 75, 185, 143, 124, m);
+        drawScale(g, 97, 229, 59, 260, 113, 168, m);
+        drawScale(g, 119, 285, 96, 340, 97, 229, m);
+        drawScale(g, 173, 323, 173, 388, 119, 285, m);
+        drawScale(g, 246, 360, 235, 408, 173, 323, m);
     }
 
-    public void plot(Graphics g, int x, int y) {
-        g.fillRect(x, y, 1, 1);
+    public void plot(Graphics g, int x, int y, int size) {
+        g.fillRect(x, y, size, size);
     }
 
-    public void drawScale(Graphics g, int xStart, int yStart, int xCenter, int yCenter, int xEnd, int yEnd) {
-        line(g, xStart, yStart, xCenter, yCenter);
-        line(g, xCenter, yCenter, xEnd, yEnd);
+    public void drawScale(Graphics g, int xStart, int yStart, int xCenter, int yCenter, int xEnd, int yEnd, int size) {
+        line(g, xStart, yStart, xCenter, yCenter, size);
+        line(g, xCenter, yCenter, xEnd, yEnd, size);
     }
 
-    public void line(Graphics g, int x1, int y1, int x2, int y2) {
+    public void line(Graphics g, int x1, int y1, int x2, int y2, int size) {
         int dx = Math.abs(x2 - x1);
         int dy = Math.abs(y2 - y1);
 
@@ -262,7 +331,7 @@ public class GraphicsSwing extends JPanel {
         int y = y1;
 
         for (int i = 0; i < dx; i++) {
-            plot(g, x, y);
+            plot(g, x, y, size);
             if (D >= 0) {
                 if (isSwap)
                     x += sx;
