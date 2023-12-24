@@ -22,53 +22,66 @@ public class GraphicsSwing extends JPanel {
         g.setStroke(new BasicStroke(2));
 
         background(g);
-        earth(g);
+        // earth(g);
 
+        dragonScales(g);
         dragonHead(g);
-        dragonHeadDetail(g);
-        dragonFaceDetail(g);
-        dragonHeadLittleDetail(g);
-
         dragonHorn(g);
-
         dragonNeck(g);
-        dragonNeckDetail(g);
-
         dragonFrontLeg(g);
-        dragonFrontLegDetail(g);
-
         dragonFrontNailFrontLeg(g);
-        dragonFrontNailFrontLegDetail(g);
-
         dragonBackNailFrontLeg(g);
-        dragonBackNailFrontLegDetail(g);
-
         dragonBody(g);
-        dragonBodyDetail(g);
-
         dragonBackLeg(g);
         dragonThigh(g);
-        dragonBackLegDetail(g);
         dragonNailBackLeg(g);
-        dragonNailBackLegDetail(g);
-
         dragonTail(g);
+
+
+        dragonHeadDetail(g);
+        dragonFaceDetail(g);
+        dragonNeckDetail(g);
+        dragonFrontLegDetail(g);
+        dragonFrontNailFrontLegDetail(g);
+        dragonBackNailFrontLegDetail(g);
+        dragonBodyDetail(g);
+        dragonBackLegDetail(g);
+        dragonNailBackLegDetail(g);
         dragonTailDetail(g);
-        dragonScales(g);
+
+        dragonHeadLittleDetail(g);
+        dragonNeckLittleDetail(g);
+        dragonFrontLegLittleDetail(g);
+        dragonBodyLittleDetail(g);
+
+
     }
 
     public void background(Graphics g) {
         line(g, 0, 600, 600, 600, m);
         line(g, 600, 0, 600, 600, m);
+        int r = 0;
 
+        for (int i = 0; i < 600; i++) {
+            if (i % 3 == 0) {
+                r++;
+            }
+            g.setColor(new Color(r % 255, 0, 0));
+            line(g, i, 0, i, 600, 1);
+            line(g, 0, i, 600, i, 1);
+
+        }
     }
 
-    public void earth(Graphics g){
-        int xPloy[] = {};
-        int yPoly[] = {};
+    public void earth(Graphics g) {
+        int xPloy[] = { 351, 373, 417 };
+        int yPoly[] = { 191, 189, 194 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
         g.drawPolygon(ploy);
+
+        drawScale(g, 343, 276, 339, 245, 368, 261, m);
+        // line(g, FRAMEBITS, ERROR, ALLBITS, ABORT, s);
     }
 
     public void dragonHead(Graphics g) {
@@ -78,6 +91,9 @@ public class GraphicsSwing extends JPanel {
                 69 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.setColor(new Color(200, 0, 0));
+        g.fillPolygon(ploy);
+        g.setColor(Color.black);
         g.drawPolygon(ploy);
     }
 
@@ -144,6 +160,9 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 82, 77, 85, 95, 125, 168, 180, 202, 155, 171, 153, 140, 130, 114, 82 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.setColor(new Color(200, 0, 0));
+        g.fillPolygon(ploy);
+        g.setColor(Color.black);
         g.drawPolygon(ploy);
     }
 
@@ -155,8 +174,38 @@ public class GraphicsSwing extends JPanel {
         drawScale(g, 181, 95, 180, 125, 212, 136, m);
         drawScale(g, 143, 125, 180, 125, 189, 155, m);
 
+    }
+
+    public void dragonNeckLittleDetail(Graphics g) {
+        line(g, 294, 130, 233, 113, s);
+
+        drawScale(g, 233, 113, 276, 105, 239, 93, s);
+        drawScale(g, 265, 79, 251, 97, 241, 77, s);
+
+        drawScale(g, 220, 100, 229, 78, 233, 113, s);
+        drawScale(g, 213, 136, 230, 146, 233, 113, s);
+        line(g, 213, 153, 213, 136, s);
+
         line(g, 180, 125, 157, 180, m);
         line(g, 189, 155, 213, 153, m);
+
+        drawScale(g, 180, 97, 200, 107, 180, 123, s);
+        drawScale(g, 206, 88, 197, 122, 180, 123, s);
+        line(g, 197, 122, 233, 113, s);
+
+        drawScale(g, 196, 149, 196, 131, 206, 140, s);
+
+        drawScale(g, 181, 125, 163, 108, 169, 125, s);
+        drawScale(g, 163, 108, 180, 107, 172, 116, s);
+
+        drawScale(g, 113, 168, 147, 147, 140, 127, s);
+        drawScale(g, 130, 142, 147, 147, 181, 125, s);
+        drawScale(g, 143, 176, 157, 141, 157, 180, s);
+
+        drawScale(g, 179, 127, 185, 177, 157, 180, s);
+        drawScale(g, 169, 154, 178, 166, 157, 180, s);
+        drawScale(g, 162, 168, 178, 166, 186, 177, s);
+
     }
 
     public void dragonFrontLeg(Graphics g) {
@@ -164,6 +213,9 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 155, 185, 171, 235, 224, 203, 251, 202 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.setColor(new Color(200, 0, 0));
+        g.fillPolygon(ploy);
+        g.setColor(Color.black);
         g.drawPolygon(ploy);
     }
 
@@ -174,11 +226,26 @@ public class GraphicsSwing extends JPanel {
 
     }
 
+    public void dragonFrontLegLittleDetail(Graphics g) {
+        drawScale(g, 180, 202, 206, 171, 206, 191, s);
+        drawScale(g, 181, 202, 226, 221, 235, 179, s);
+
+        drawScale(g, 187, 251, 200, 210, 200, 240, s);
+        drawScale(g, 231, 197, 248, 203, 235, 179, s);
+
+        drawScale(g, 267, 194, 248, 203, 275, 210, s);
+        line(g, 251, 189, 267, 194, s);
+
+    }
+
     public void dragonFrontNailFrontLeg(Graphics g) {
         int xPloy[] = { 282, 293, 302, 310, 316, 305, 305, 290 };
         int yPoly[] = { 222, 212, 223, 223, 253, 240, 249, 235 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.setColor(new Color(200, 0, 0));
+        g.fillPolygon(ploy);
+        g.setColor(Color.black);
         g.drawPolygon(ploy);
     }
 
@@ -195,11 +262,16 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 224, 235, 242, 245, 256, 235 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.setColor(new Color(200, 0, 0));
+        g.fillPolygon(ploy);
+        g.setColor(Color.black);
         g.drawPolygon(ploy);
     }
 
     public void dragonBackNailFrontLegDetail(Graphics g) {
         line(g, 246, 245, 253, 235, m);
+        line(g, 257, 248, 260, 222, s);
+        drawScale(g, 267, 243, 258, 236, 289, 234, s);
     }
 
     public void dragonBody(Graphics g) {
@@ -207,6 +279,9 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 229, 285, 323, 299, 295, 251, 202, 180, 168 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.setColor(new Color(200, 0, 0));
+        g.fillPolygon(ploy);
+        g.setColor(Color.black);
         g.drawPolygon(ploy);
     }
 
@@ -216,11 +291,37 @@ public class GraphicsSwing extends JPanel {
         line(g, 164, 260, 187, 251, m);
     }
 
+    public void dragonBodyLittleDetail(Graphics g) {
+        drawScale(g, 102, 210, 114, 214, 114, 169, s);
+        drawScale(g, 115, 169, 138, 194, 138, 175, s);
+
+        drawScale(g, 97, 230, 145, 235, 131, 201, s);
+
+        line(g, 97, 230, 142, 243, s);
+        drawScale(g, 108, 259, 125, 238, 118, 285, s);
+
+        drawScale(g, 145, 235, 151, 282, 121, 286, s);
+        drawScale(g, 131, 262, 151, 282, 129, 293, s);
+        drawScale(g, 144, 300, 151, 282, 173, 272, s);
+
+        line(g, 144, 298, 192, 298, s);
+        line(g, 172, 298, 172, 323, s);
+
+        line(g, 157, 180, 187, 251, s);
+        drawScale(g, 167, 208, 145, 235, 187, 251, s);
+
+        line(g, 163, 260, 249, 294, s);
+        drawScale(g, 192, 299, 203, 276, 225, 296, s);
+    }
+
     public void dragonBackLeg(Graphics g) {
         int xPloy[] = { 173, 193, 250, 280, 340, 274, 284, 246, 195, 246, 246 };
         int yPoly[] = { 323, 299, 295, 290, 333, 372, 410, 461, 432, 432, 360 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.setColor(new Color(200, 0, 0));
+        g.fillPolygon(ploy);
+        g.setColor(Color.black);
         g.drawPolygon(ploy);
     }
 
@@ -228,6 +329,10 @@ public class GraphicsSwing extends JPanel {
         line(g, 173, 323, 340, 333, m);
         line(g, 193, 299, 340, 333, m);
         line(g, 247, 360, 340, 333, m);
+    }
+
+    public void dragonThighLittledetail(Graphics g){
+
     }
 
     public void dragonBackLegDetail(Graphics g) {
@@ -241,6 +346,9 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 432, 410, 432, 402, 424, 416, 432 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.setColor(new Color(200, 0, 0));
+        g.fillPolygon(ploy);
+        g.setColor(Color.black);
         g.drawPolygon(ploy);
     }
 
@@ -258,6 +366,9 @@ public class GraphicsSwing extends JPanel {
                 521, 511, 517, 507, 496, 494, 424, 453, 410, 372 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.setColor(new Color(200, 0, 0));
+        g.fillPolygon(ploy);
+        g.setColor(Color.black);
         g.drawPolygon(ploy);
     }
 
@@ -280,25 +391,38 @@ public class GraphicsSwing extends JPanel {
 
         drawScale(g, 178, 552, 256, 517, 215, 566, m);
 
-        //
-
         drawScale(g, 130, 518, 198, 521, 150, 532, m);
         drawScale(g, 123, 485, 146, 506, 198, 521, m);
         drawScale(g, 123, 485, 130, 518, 146, 506, m);
         drawScale(g, 45, 448, 63, 444, 76, 487, m);
         drawScale(g, 99, 467, 124, 501, 76, 487, m);
+
     }
 
     public void dragonScales(Graphics g) {
-        drawScale(g, 241, 77, 225, 68, 288, 82, m);
-        drawScale(g, 209, 85, 193, 77, 241, 77, m);
-        drawScale(g, 181, 95, 159, 87, 209, 85, m);
-        drawScale(g, 143, 125, 112, 130, 181, 95, m);
-        drawScale(g, 113, 168, 75, 185, 143, 124, m);
-        drawScale(g, 97, 229, 59, 260, 113, 168, m);
-        drawScale(g, 119, 285, 96, 340, 97, 229, m);
-        drawScale(g, 173, 323, 173, 388, 119, 285, m);
-        drawScale(g, 246, 360, 235, 408, 173, 323, m);
+
+        int[] xPloy = { 288, 225, 241, 197, 209, 159, 181, 112, 143, 75, 113, 59, 97, 96, 119, 173, 173, 235, 246, 251,
+                116 };
+        int[] yPoly = { 82, 68, 77, 77, 85, 87, 95, 130, 125, 185, 168, 260, 229, 340, 285, 388, 323, 408, 360, 323,
+                197 };
+        Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
+        g.setColor(new Color(200, 0, 0));
+        g.fillPolygon(ploy);
+        g.setColor(Color.black);
+        g.drawPolygon(ploy);
+
+        // g.setColor(Color.RED);
+        // drawScale(g, 241, 77, 225, 68, 288, 82, m);
+        // drawScale(g, 209, 85, 193, 77, 241, 77, m);
+        // drawScale(g, 181, 95, 159, 87, 209, 85, m);
+
+        // drawScale(g, 143, 125, 112, 130, 181, 95, m);
+        // drawScale(g, 113, 168, 75, 185, 143, 124, m);
+        // drawScale(g, 97, 229, 59, 260, 113, 168, m);
+
+        // drawScale(g, 119, 285, 96, 340, 97, 229, m);
+        // drawScale(g, 173, 323, 173, 388, 119, 285, m);
+        // drawScale(g, 246, 360, 235, 408, 173, 323, m);
     }
 
     public void plot(Graphics g, int x, int y, int size) {
