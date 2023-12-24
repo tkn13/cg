@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.util.LinkedList;
+import java.awt.image.BufferedImage;
+import java.util.Queue;
 import javax.swing.*;
 
 public class GraphicsSwing extends JPanel {
@@ -16,44 +19,55 @@ public class GraphicsSwing extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g2) {
+    public void paintComponent(Graphics g) {
+        BufferedImage buffer = new BufferedImage(601, 601, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = buffer.createGraphics();
+        myColor myColor = new myColor();
 
-        Graphics2D g = (Graphics2D) g2;
-        g.setStroke(new BasicStroke(2));
+        g2.setColor(Color.WHITE);
+        g2.fillRect(0, 0, 600, 600);
+        g2.setColor(Color.black);
+        g2.setStroke(new BasicStroke(2));
 
-        background(g);
+        //background(g2);
         // earth(g);
 
-        dragonScales(g);
-        dragonHead(g);
-        dragonHorn(g);
-        dragonNeck(g);
-        dragonFrontLeg(g);
-        dragonFrontNailFrontLeg(g);
-        dragonBackNailFrontLeg(g);
-        dragonBody(g);
-        dragonBackLeg(g);
-        dragonThigh(g);
-        dragonNailBackLeg(g);
-        dragonTail(g);
+        dragonScales(g2);
+        dragonHead(g2);
+        dragonHorn(g2);
+        dragonNeck(g2);
+        dragonFrontLeg(g2);
+        dragonFrontNailFrontLeg(g2);
+        dragonBackNailFrontLeg(g2);
+        dragonBody(g2);
+        dragonBackLeg(g2);
+        dragonThigh(g2);
+        dragonNailBackLeg(g2);
+        dragonTail(g2);
 
+        g2.setColor(new Color(0, 0, 255));
+        dragonHeadLittleDetail(g2);
+        dragonNeckLittleDetail(g2);
+        dragonFrontLegLittleDetail(g2);
+        dragonBodyLittleDetail(g2);
+        dragonThighLittleDetail(g2);
+        dragonTailLittleDetail(g2);
 
-        dragonHeadDetail(g);
-        dragonFaceDetail(g);
-        dragonNeckDetail(g);
-        dragonFrontLegDetail(g);
-        dragonFrontNailFrontLegDetail(g);
-        dragonBackNailFrontLegDetail(g);
-        dragonBodyDetail(g);
-        dragonBackLegDetail(g);
-        dragonNailBackLegDetail(g);
-        dragonTailDetail(g);
+        dragonBackLegLittleDetail(g2);
 
-        dragonHeadLittleDetail(g);
-        dragonNeckLittleDetail(g);
-        dragonFrontLegLittleDetail(g);
-        dragonBodyLittleDetail(g);
+        g2.setColor(Color.black);
+        dragonHeadDetail(g2);
+        dragonFaceDetail(g2);
+        dragonNeckDetail(g2);
+        dragonFrontLegDetail(g2);
+        dragonFrontNailFrontLegDetail(g2);
+        dragonBackNailFrontLegDetail(g2);
+        dragonBodyDetail(g2);
+        dragonBackLegDetail(g2);
+        dragonNailBackLegDetail(g2);
+        dragonTailDetail(g2);
 
+        g.drawImage(buffer, 0, 0, null);
 
     }
 
@@ -91,7 +105,7 @@ public class GraphicsSwing extends JPanel {
                 69 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(new Color(200, 0, 0));
+        g.setColor(Color.white);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -114,7 +128,7 @@ public class GraphicsSwing extends JPanel {
         drawScale(g, 373, 154, 395, 142, 365, 130, s);
         drawScale(g, 395, 142, 395, 182, 409, 175, s);
 
-        line(g, 347, 176, 361, 169, s);
+        line(g, 348, 174, 361, 169, s);
 
         drawScale(g, 384, 116, 397, 109, 409, 130, s);
         line(g, 384, 116, 409, 130, s);
@@ -160,7 +174,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 82, 77, 85, 95, 125, 168, 180, 202, 155, 171, 153, 140, 130, 114, 82 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(new Color(200, 0, 0));
+        g.setColor(Color.white);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -213,7 +227,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 155, 185, 171, 235, 224, 203, 251, 202 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(new Color(200, 0, 0));
+        g.setColor(Color.white);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -243,7 +257,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 222, 212, 223, 223, 253, 240, 249, 235 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(new Color(200, 0, 0));
+        g.setColor(Color.white);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -262,7 +276,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 224, 235, 242, 245, 256, 235 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(new Color(200, 0, 0));
+        g.setColor(Color.white);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -279,7 +293,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 229, 285, 323, 299, 295, 251, 202, 180, 168 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(new Color(200, 0, 0));
+        g.setColor(Color.white);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -319,7 +333,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 323, 299, 295, 290, 333, 372, 410, 461, 432, 432, 360 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(new Color(200, 0, 0));
+        g.setColor(Color.white);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -331,8 +345,22 @@ public class GraphicsSwing extends JPanel {
         line(g, 247, 360, 340, 333, m);
     }
 
-    public void dragonThighLittledetail(Graphics g){
+    public void dragonThighLittleDetail(Graphics g) {
+        drawScale(g, 231, 308, 247, 294, 295, 322, s);
+        line(g, 280, 290, 295, 322, s);
 
+        drawScale(g, 214, 304, 221, 317, 264, 314, s);
+        drawScale(g, 225, 325, 221, 317, 262, 327, s);
+        line(g, 192, 323, 214, 304, s);
+        line(g, 264, 314, 262, 327, s);
+        line(g, 284, 321, 296, 330, s);
+
+        drawScale(g, 233, 327, 243, 341, 267, 353, s);
+        drawScale(g, 267, 353, 278, 330, 304, 342, s);
+        line(g, 218, 326, 218, 345, s);
+        line(g, 243, 341, 249, 360, s);
+
+        line(g, 274, 372, 294, 345, s);
     }
 
     public void dragonBackLegDetail(Graphics g) {
@@ -341,12 +369,22 @@ public class GraphicsSwing extends JPanel {
         drawScale(g, 246, 405, 274, 422, 274, 372, m);
     }
 
+    public void dragonBackLegLittleDetail(Graphics g) {
+        drawScale(g, 273, 381, 247, 381, 263, 413, s);
+        drawScale(g, 247, 381, 274, 402, 263, 413, s);
+
+        drawScale(g, 248, 432, 267, 432, 247, 405, s);
+
+        drawScale(g, 219, 432, 225, 448, 247, 432, s);
+        line(g, 236, 439, 247, 461, s);
+    }
+
     public void dragonNailBackLeg(Graphics g) {
         int xPloy[] = { 195, 205, 205, 216, 233, 216, 216 };
         int yPoly[] = { 432, 410, 432, 402, 424, 416, 432 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(new Color(200, 0, 0));
+        g.setColor(Color.white);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -366,7 +404,7 @@ public class GraphicsSwing extends JPanel {
                 521, 511, 517, 507, 496, 494, 424, 453, 410, 372 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(new Color(200, 0, 0));
+        g.setColor(Color.white);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -399,6 +437,34 @@ public class GraphicsSwing extends JPanel {
 
     }
 
+    public void dragonTailLittleDetail(Graphics g) {
+        drawScale(g, 348, 372, 274, 372, 335, 390, s);
+        line(g, 305, 402, 313, 384, s);
+        line(g, 313, 372, 334, 354, s);
+
+        drawScale(g, 362, 388, 351, 425, 373, 435, s);
+        line(g, 336, 433, 351, 425, s);
+
+        drawScale(g, 335, 447, 373, 466, 345, 479, s);
+        line(g, 356, 474, 365, 494, s);
+        line(g, 339, 489, 350, 494, s);
+
+        drawScale(g, 335, 538, 330, 520, 358, 517, s);
+        line(g, 314, 498, 330, 520, s);
+
+        line(g, 282, 543, 291, 562, s);
+        drawScale(g, 314, 527, 298, 541, 314, 557, s);
+        line(g, 291, 534, 298, 541, s);
+        drawScale(g, 242, 567, 251, 551, 263, 569, s);
+
+        drawScale(g, 233, 543, 251, 549, 255, 516, s);
+        drawScale(g, 197, 543, 215, 565, 222, 534, s);
+        line(g, 174, 528, 178, 551, s);
+
+        line(g, 76, 487, 99, 467, s);
+        line(g, 45, 447, 52, 429, s);
+    }
+
     public void dragonScales(Graphics g) {
 
         int[] xPloy = { 288, 225, 241, 197, 209, 159, 181, 112, 143, 75, 113, 59, 97, 96, 119, 173, 173, 235, 246, 251,
@@ -406,7 +472,7 @@ public class GraphicsSwing extends JPanel {
         int[] yPoly = { 82, 68, 77, 77, 85, 87, 95, 130, 125, 185, 168, 260, 229, 340, 285, 388, 323, 408, 360, 323,
                 197 };
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(new Color(200, 0, 0));
+        g.setColor(Color.white);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -472,5 +538,74 @@ public class GraphicsSwing extends JPanel {
 
             D += 2 * dy;
         }
+    }
+
+    public void paint(Graphics g, int x, int y, Color c) {
+        Color previousColor = g.getColor();
+        g.setColor(c);
+        g.fillRect(x, y, 1, 1);
+        g.setColor(previousColor);
+    }
+
+    public BufferedImage floodFill(BufferedImage m, int x, int y, Color replacement_colour) {
+        Color c = new Color(m.getRGB(x, y));
+        return floodFill(m, x, y, c, replacement_colour);
+    }
+
+    public BufferedImage floodFill(BufferedImage m, int x, int y, Color target_colour, Color replacement_colour) {
+
+        class Node {
+            int x;
+            int y;
+
+            Node(int x, int y) {
+                this.x = x;
+                this.y = y;
+            }
+        }
+
+        Queue<Node> q = new LinkedList<Node>();
+        Graphics g = m.getGraphics();
+        paint(g, x, y, replacement_colour);
+        q.add(new Node(x, y));
+
+        while (!q.isEmpty()) {
+
+            Node currNode = q.remove();
+            int currX = currNode.x;
+            int currY = currNode.y;
+
+            int north = m.getRGB(currX, currY - 1);
+            int east = m.getRGB(currX + 1, currY);
+            int west = m.getRGB(currX - 1, currY);
+            int south = m.getRGB(currX, currY + 1);
+
+            if (north == target_colour.getRGB()) {
+
+                paint(g, currX, currY - 1, replacement_colour);
+                q.add(new Node(currX, currY - 1));
+
+            }
+            if (east == target_colour.getRGB()) {
+
+                paint(g, currX + 1, currY, replacement_colour);
+                q.add(new Node(currX + 1, currY));
+
+            }
+            if (west == target_colour.getRGB()) {
+
+                paint(g, currX - 1, currY, replacement_colour);
+                q.add(new Node(currX - 1, currY));
+
+            }
+            if (south == target_colour.getRGB()) {
+
+                paint(g, currX, currY + 1, replacement_colour);
+                q.add(new Node(currX, currY + 1));
+
+            }
+        }
+
+        return m;
     }
 }
