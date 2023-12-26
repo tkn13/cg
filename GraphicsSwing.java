@@ -14,7 +14,10 @@ public class GraphicsSwing extends JPanel {
     int m = 2;
     int s = 1;
     myColor myColor = new myColor();
-    Color skin = new Color(255,255,255);
+    //Color skin = new Color(255,255,255);
+    Color skin = new Color(200, 0, 0);
+    Color detail = new Color(201,0,0);
+    Color bigDetail = new Color(0,0,0);
 
     public static void main(String[] args) {
         GraphicsSwing m = new GraphicsSwing();
@@ -51,7 +54,7 @@ public class GraphicsSwing extends JPanel {
         dragonNailBackLeg(g2);
         dragonTail(g2);
 
-        g2.setColor(new Color(0,0,255));
+        g2.setColor(detail);
         dragonHeadLittleDetail(g2);
         dragonNeckLittleDetail(g2);
         dragonFrontLegLittleDetail(g2);
@@ -65,7 +68,7 @@ public class GraphicsSwing extends JPanel {
         // plot(g2, 119, 146, 4);
         // g2.setColor(Color.black);
 
-        g2.setColor(Color.black);
+        g2.setColor(bigDetail);
         dragonHeadDetail(g2);
         dragonFaceDetail(g2);
         dragonNeckDetail(g2);
@@ -197,11 +200,11 @@ public class GraphicsSwing extends JPanel {
     public void dragonHornLittleDetail(Graphics g){
         drawScale(g, 344, 72, 358, 81, 361, 105, s);
         line(g, 323, 76, 347, 87, s);
-        
+
         drawScale(g, 319, 74, 319, 87, 354, 104, s);
         line(g, 211, 82, 213, 76, s);
         line(g, 173, 88, 180, 94, s);
-        line(g, 140, 115, 140, 123, s);
+        line(g, 140, 117, 140, 125, s);
 
         drawScale(g, 122, 151, 97, 165, 113, 165, s);
         drawScale(g, 76, 243, 88, 212, 97, 227, s);
