@@ -1,13 +1,20 @@
 import java.awt.*;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.awt.image.BufferedImage;
 import java.util.Queue;
 import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class GraphicsSwing extends JPanel {
 
     int m = 2;
     int s = 1;
+    myColor myColor = new myColor();
+    Color skin = new Color(255,255,255);
 
     public static void main(String[] args) {
         GraphicsSwing m = new GraphicsSwing();
@@ -22,14 +29,13 @@ public class GraphicsSwing extends JPanel {
     public void paintComponent(Graphics g) {
         BufferedImage buffer = new BufferedImage(601, 601, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = buffer.createGraphics();
-        myColor myColor = new myColor();
 
-        g2.setColor(Color.WHITE);
-        g2.fillRect(0, 0, 600, 600);
+        g2.setColor(skin);
+        //g2.fillRect(0, 0, 600, 600);
         g2.setColor(Color.black);
         g2.setStroke(new BasicStroke(2));
 
-        //background(g2);
+        
         // earth(g);
 
         dragonScales(g2);
@@ -45,15 +51,19 @@ public class GraphicsSwing extends JPanel {
         dragonNailBackLeg(g2);
         dragonTail(g2);
 
-        g2.setColor(new Color(0, 0, 255));
+        g2.setColor(new Color(0,0,255));
         dragonHeadLittleDetail(g2);
         dragonNeckLittleDetail(g2);
         dragonFrontLegLittleDetail(g2);
         dragonBodyLittleDetail(g2);
         dragonThighLittleDetail(g2);
         dragonTailLittleDetail(g2);
+        dragonHornLittleDetail(g2);
 
         dragonBackLegLittleDetail(g2);
+        // g2.setColor(Color.pink);
+        // plot(g2, 119, 146, 4);
+        // g2.setColor(Color.black);
 
         g2.setColor(Color.black);
         dragonHeadDetail(g2);
@@ -67,9 +77,40 @@ public class GraphicsSwing extends JPanel {
         dragonNailBackLegDetail(g2);
         dragonTailDetail(g2);
 
+        line(g2, 0, 600, 600, 600, s);
+        line(g2, 600, 0, 600, 600, s);
+        line(g2, 0, 0, 0, 600, s);
+        line(g2, 0, 0, 600, 0, s);
+
+
+//// test zone /////
+
+        // int currX = 10;
+        // int currY = 10;
+        // int traget = buffer.getRGB(currX, currY);
+        // int replacement = myColor.c1.getRGB();
+        // System.out.println(traget);
+
+        // //line(g2, 30, 0, 30, 600, 5);
+        // while(buffer.getRGB(currX, currY) == traget && currX > 0){
+        //     paint(g2, currX, currY, new Color(replacement));
+        //     currX--;
+        //      System.out.println(buffer.getRGB(currX, currY) == traget);
+        // }
+       
+        
+        // floodFill(buffer, 10, 10, Color.BLUE);
+        
+
+//// end zone ////
+
+        paintdragon(buffer);
+        background(g);
+
         g.drawImage(buffer, 0, 0, null);
 
     }
+
 
     public void background(Graphics g) {
         line(g, 0, 600, 600, 600, m);
@@ -99,13 +140,13 @@ public class GraphicsSwing extends JPanel {
     }
 
     public void dragonHead(Graphics g) {
-        int xPloy[] = { 280, 314, 278, 288, 274, 337, 348, 386, 450, 459, 465, 463, 432, 419, 417, 375, 354, 357, 324,
+        int xPloy[] = { 280, 314, 278, 288, 274, 337, 348, 386, 450, 459, 465, 463, 432, 419, 417, 375, 356, 357, 324,
                 350, 312, 314 };
         int yPoly[] = { 40, 84, 71, 82, 114, 160, 176, 180, 202, 198, 200, 178, 145, 140, 122, 94, 52, 77, 30, 90, 52,
                 69 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(Color.white);
+        g.setColor(skin);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -153,6 +194,41 @@ public class GraphicsSwing extends JPanel {
         line(g, 314, 69, 361, 109, m);
         line(g, 314, 84, 325, 98, m);
     }
+    public void dragonHornLittleDetail(Graphics g){
+        drawScale(g, 344, 72, 358, 81, 361, 105, s);
+        line(g, 323, 76, 347, 87, s);
+        
+        drawScale(g, 319, 74, 319, 87, 354, 104, s);
+        line(g, 211, 82, 213, 76, s);
+        line(g, 173, 88, 180, 94, s);
+        line(g, 140, 115, 140, 123, s);
+
+        drawScale(g, 122, 151, 97, 165, 113, 165, s);
+        drawScale(g, 76, 243, 88, 212, 97, 227, s);
+
+        drawScale(g, 107, 272, 98, 297, 104, 316, s);
+        drawScale(g, 98, 260, 116, 287, 98, 297, s);
+
+        drawScale(g, 171, 358, 157, 354, 172, 324, s);
+        drawScale(g, 142, 304, 138, 317, 167, 337, s);
+
+        drawScale(g, 187, 340, 208, 341, 204, 363, s);
+        drawScale(g, 204, 363, 226, 361, 234, 406, s);
+        line(g, 226, 361, 245, 360, s);
+
+        drawScale(g, 310, 436, 286, 411, 319, 419, s);
+        line(g, 294, 436, 310, 436, s);
+
+        drawScale(g, 306, 456, 314, 481, 289, 482, s);
+
+        drawScale(g, 259, 504, 269, 511, 278, 500, s);
+
+        line(g, 201, 512, 218, 523, s);
+
+        line(g, 320, 467, 339, 499, s);
+
+        drawScale(g, 259, 517   , 284, 527, 284, 509, s);
+    }
 
     public void dragonFaceDetail(Graphics g) {
         line(g, 274, 114, 325, 98, m);
@@ -174,7 +250,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 82, 77, 85, 95, 125, 168, 180, 202, 155, 171, 153, 140, 130, 114, 82 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(Color.white);
+        g.setColor(skin);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -227,7 +303,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 155, 185, 171, 235, 224, 203, 251, 202 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(Color.white);
+        g.setColor(skin);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -257,7 +333,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 222, 212, 223, 223, 253, 240, 249, 235 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(Color.white);
+        g.setColor(skin);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -276,7 +352,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 224, 235, 242, 245, 256, 235 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(Color.white);
+        g.setColor(skin);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -293,7 +369,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 229, 285, 323, 299, 295, 251, 202, 180, 168 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(Color.white);
+        g.setColor(skin);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -333,7 +409,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 323, 299, 295, 290, 333, 372, 410, 461, 432, 432, 360 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(Color.white);
+        g.setColor(skin);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -384,7 +460,7 @@ public class GraphicsSwing extends JPanel {
         int yPoly[] = { 432, 410, 432, 402, 424, 416, 432 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(Color.white);
+        g.setColor(skin);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -404,7 +480,7 @@ public class GraphicsSwing extends JPanel {
                 521, 511, 517, 507, 496, 494, 424, 453, 410, 372 };
 
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(Color.white);
+        g.setColor(skin);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -472,7 +548,7 @@ public class GraphicsSwing extends JPanel {
         int[] yPoly = { 82, 68, 77, 77, 85, 87, 95, 130, 125, 185, 168, 260, 229, 340, 285, 388, 323, 408, 360, 323,
                 197 };
         Polygon ploy = new Polygon(xPloy, yPoly, xPloy.length);
-        g.setColor(Color.white);
+        g.setColor(skin);
         g.fillPolygon(ploy);
         g.setColor(Color.black);
         g.drawPolygon(ploy);
@@ -548,11 +624,13 @@ public class GraphicsSwing extends JPanel {
     }
 
     public BufferedImage floodFill(BufferedImage m, int x, int y, Color replacement_colour) {
-        Color c = new Color(m.getRGB(x, y));
-        return floodFill(m, x, y, c, replacement_colour);
+
+        int target = m.getRGB(x, y);
+        int replacement = replacement_colour.getRGB();
+        return floodFill(m, x, y, target, replacement);
     }
 
-    public BufferedImage floodFill(BufferedImage m, int x, int y, Color target_colour, Color replacement_colour) {
+    public BufferedImage floodFill(BufferedImage m, int x, int y, int target_colour, int replacement) {
 
         class Node {
             int x;
@@ -564,11 +642,13 @@ public class GraphicsSwing extends JPanel {
             }
         }
 
+        Color replacement_colour = new Color(replacement);
+
         Queue<Node> q = new LinkedList<Node>();
         Graphics g = m.getGraphics();
         paint(g, x, y, replacement_colour);
         q.add(new Node(x, y));
-
+        //System.out.println(target_colour.getRGB());
         while (!q.isEmpty()) {
 
             Node currNode = q.remove();
@@ -580,25 +660,26 @@ public class GraphicsSwing extends JPanel {
             int west = m.getRGB(currX - 1, currY);
             int south = m.getRGB(currX, currY + 1);
 
-            if (north == target_colour.getRGB()) {
+
+            if (north == target_colour) {
 
                 paint(g, currX, currY - 1, replacement_colour);
                 q.add(new Node(currX, currY - 1));
 
             }
-            if (east == target_colour.getRGB()) {
+            if (east == target_colour) {
 
                 paint(g, currX + 1, currY, replacement_colour);
                 q.add(new Node(currX + 1, currY));
 
             }
-            if (west == target_colour.getRGB()) {
+            if (west == target_colour) {
 
                 paint(g, currX - 1, currY, replacement_colour);
                 q.add(new Node(currX - 1, currY));
 
             }
-            if (south == target_colour.getRGB()) {
+            if (south == target_colour) {
 
                 paint(g, currX, currY + 1, replacement_colour);
                 q.add(new Node(currX, currY + 1));
@@ -607,5 +688,57 @@ public class GraphicsSwing extends JPanel {
         }
 
         return m;
+    }
+
+    public void paintdragon(BufferedImage buffer){
+        String csvFile = "color.csv";
+        String line;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+
+                int x = Integer.parseInt(data[0]);
+                int y = Integer.parseInt(data[1]);
+                Color color = colorMapper(data[2]);
+
+                floodFill(buffer, x, y, color);
+            }
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Color colorMapper(String c){
+        Map<String, Color> colorMap = new HashMap<>();
+        colorMap.put("c1", myColor.c1);
+        colorMap.put("c2", myColor.c2);
+        colorMap.put("c3", myColor.c3);
+        colorMap.put("c4", myColor.c4);
+        colorMap.put("c5", myColor.c5);
+        colorMap.put("c6", myColor.c6);
+        colorMap.put("c7", myColor.c7);
+        colorMap.put("c8", myColor.c8);
+        colorMap.put("c9", myColor.c9);
+        colorMap.put("c10", myColor.c10);
+        colorMap.put("c11", myColor.c11);
+        colorMap.put("c12", myColor.c12);
+        colorMap.put("c13", myColor.c13);
+        colorMap.put("c14", myColor.c14);
+        colorMap.put("c15", myColor.c15);
+        colorMap.put("c16", myColor.c16);
+        colorMap.put("c17", myColor.c17);
+        colorMap.put("c18", myColor.c18);
+        colorMap.put("c19", myColor.c19);
+        colorMap.put("c20", myColor.c20);
+        colorMap.put("c21", myColor.c21);
+        colorMap.put("c22", myColor.c22);
+        colorMap.put("c23", myColor.c23);
+        colorMap.put("c24", myColor.c24);
+        colorMap.put("c25", myColor.c25);
+        colorMap.put("c26", myColor.c26);
+        colorMap.put("c27", myColor.c27);
+
+        return colorMap.getOrDefault(c, Color.BLACK);
     }
 }

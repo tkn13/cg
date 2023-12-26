@@ -1,5 +1,6 @@
 import pyautogui
 import keyboard
+import csv
 
 # Initialize start and end positions
 start_position = (0, 0)
@@ -9,7 +10,7 @@ end_position = (0, 0)
 logical_range = 600
 
 # Output file name
-output_file_name = "output.txt"
+output_file_name = "color.csv"
 
 # Initialize color variables c1 to c10
 colors = ['c0', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10']
@@ -63,22 +64,19 @@ def get_last_line(file_path):
 def print_logical_position():
     logical_pos = update_logical_position()
     current_color = colors[current_color_index]
-    output_str = f"buffer = floodFill(buffer, {logical_pos[0]}, {logical_pos[1]}, myColor.{current_color});\n"
+    output_str = f"{logical_pos[0]},{logical_pos[1]},{current_color}\n"
 
-    # Check if the last line in the file is the same as the current output
-    last_line = get_last_line(output_file_name)
-    print(last_line)
-    print(output_str)
-    print(last_line == output_str)
+    # Check if the stripped last line in the file is the same as the stripped current output
     last_line = get_last_line(output_file_name)
     if last_line and last_line.strip() == output_str.strip():
         print("Skipping duplicate line.")
     else:
-        # print(output_str)
+        print(output_str)
 
-        # Write the output to the file
-        with open(output_file_name, "a") as output_file:
-            output_file.write(output_str)
+        # Write the output to the CSV file
+        with open(output_file_name, "a", newline='') as csv_file:
+            csv_writer = csv.writer(csv_file)
+            csv_writer.writerow([logical_pos[0], logical_pos[1], current_color])
 
 def main():
     try:
